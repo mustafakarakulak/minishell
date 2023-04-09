@@ -1,5 +1,5 @@
 all:
-	gcc *.c libft/libft.a -lreadline -o minishell
+	gcc ms_utils.c minishell.c utils.c libft/libft.a -lreadline -o minishell -g 
 
 clean:
 	rm minishell

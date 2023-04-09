@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:00:19 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/09 14:19:12 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/04/09 18:00:29 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,40 @@ char *get_username(char **envp)
 	return (username);
 }
 
+void	exec_shell(char **envp, t_env *data)
+{
+	char	*line;
+	char	**args;
+	int		status;
+	
+	while (1)
+	{
+		printf("\033[32m╭─%s@\033[0m", get_username(envp));
+		line = readline("\033[32mminishell$\n╰─$ \033[0m");
+		add_history(line);
+		write_history("/Users/mkarakul/Desktop/projemini/log/.bash_history");
+		ft_command_checker(line, data);
+		if (ft_strcmp(args[0], "exit\n"))
+			break ;
+		error_checker(data, envp);
+		if (fork() == 0)
+		{
+			execve(args[0], args, envp);
+			perror("miniShell");
+			exit(1);
+		}
+		else
+		{
+			wait(&status);
+		}
+	}
+}
+
 int	main(int ac, char **av, char **env)
 {
 	t_env	*data;
-	char	*line;
 
 	data = (t_env *)malloc(sizeof(t_env));
-	data->username = get_username(env);
-	while (1)
-	{
-		printf("%s@", data->username);
-		line = readline("minishell$ ");
-		add_history(line);
-		write_history("/Users/mkarakul/Desktop/projemini/log/.bash_history");
-		if (ft_strcmp(line, "exit\n"))
-			break ;
-		ft_command_checker(line, data);
-	}
+	exec_shell(env, data);
 	return (0);
 }

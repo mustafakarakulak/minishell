@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 16:32:48 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/09 14:11:15 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/04/09 17:40:15 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,7 @@ int		ft_strcmp(char *s1, char *s2);
 
 // ms_utils
 int		ft_command_checker(char *str, t_env *data);
+void	error_checker(t_env *data, char **env);
+void	exec_shell(char **envp, t_env *data);
 
 #endif
