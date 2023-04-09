@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/08 16:47:08 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/08 19:46:36 by mkarakul         ###   ########.fr       */
+/*   Created: 2022/12/18 04:26:17 by mkarakul          #+#    #+#             */
+/*   Updated: 2022/12/18 15:22:08 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int	ft_strcmp(char *s1, char *s2)
+void	ft_putendl_fd(char *s, int fd)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (s1[i] && s2[i])
+	if (!s)
+		return ;
+	while (s[i])
 	{
-		if (s1[i] != s2[i])
-			return (0);
+		ft_putchar_fd(s[i], fd);
 		i++;
 	}
-	return (1);
+	write(fd, "\n", 1);
 }

@@ -6,19 +6,28 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:22:06 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/08 17:24:41 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/04/09 14:18:22 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_command_checker(char *str)
+int	ft_command_checker(char *str, t_env *data)
 {
-	if (ft_strcmp(str, "echo"))
-		return (1);
-	if (ft_strcmp(str, "history"))
+	char	**line;
+	int		i;
+
+	data->count = 0;
+	i = 0;
+	line = ft_split(str, ' ');
+	while (line[i])
+		i++;
+	data->input = (char **)malloc(sizeof(char *) * i);
+	while (i > 0)
 	{
-		
+		data->input[data->count++] = ft_strdup(line[data->count]);
+		i--;
 	}
+	return (0);
 }
 

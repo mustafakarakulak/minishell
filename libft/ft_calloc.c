@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/08 16:47:08 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/08 19:46:36 by mkarakul         ###   ########.fr       */
+/*   Created: 2022/12/13 19:59:16 by mkarakul          #+#    #+#             */
+/*   Updated: 2022/12/25 10:07:42 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int	ft_strcmp(char *s1, char *s2)
+void	*ft_calloc(size_t count, size_t size)
 {
-	int	i;
+	void	*mem;
 
-	i = 0;
-	while (s1[i] && s2[i])
-	{
-		if (s1[i] != s2[i])
-			return (0);
-		i++;
-	}
-	return (1);
+	mem = malloc(count * size);
+	if (mem == NULL)
+		return (mem);
+	ft_bzero(mem, size * count);
+	return (mem);
 }

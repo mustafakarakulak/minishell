@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/08 16:47:08 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/08 19:46:36 by mkarakul         ###   ########.fr       */
+/*   Created: 2022/12/08 18:29:37 by mkarakul          #+#    #+#             */
+/*   Updated: 2022/12/18 15:28:05 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int	ft_strcmp(char *s1, char *s2)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (s1[i] && s2[i])
+	if (!dst && !src)
+		return (0);
+	while (i < n)
 	{
-		if (s1[i] != s2[i])
-			return (0);
+		*(char *)(dst + i) = *(char *)(src + i);
 		i++;
 	}
-	return (1);
+	return (dst);
 }

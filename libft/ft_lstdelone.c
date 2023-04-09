@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/08 16:47:08 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/08 19:46:36 by mkarakul         ###   ########.fr       */
+/*   Created: 2022/12/20 13:39:31 by mkarakul          #+#    #+#             */
+/*   Updated: 2022/12/20 13:39:47 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int	ft_strcmp(char *s1, char *s2)
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	int	i;
+	t_list	*temp;
 
-	i = 0;
-	while (s1[i] && s2[i])
-	{
-		if (s1[i] != s2[i])
-			return (0);
-		i++;
-	}
-	return (1);
+	temp = lst;
+	if (lst == NULL)
+		return ;
+	lst = lst->next;
+	(*del)(temp->content);
+	free(temp);
 }

@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/08 16:47:08 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/08 19:46:36 by mkarakul         ###   ########.fr       */
+/*   Created: 2022/12/06 20:48:01 by mkarakul          #+#    #+#             */
+/*   Updated: 2022/12/18 15:26:26 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int	ft_strcmp(char *s1, char *s2)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	int	i;
+	unsigned char	*ptr;
 
-	i = 0;
-	while (s1[i] && s2[i])
+	ptr = (unsigned char *)b;
+	while (len > 0)
 	{
-		if (s1[i] != s2[i])
-			return (0);
-		i++;
+		*ptr = (unsigned char)c;
+		len--;
+		ptr++;
 	}
-	return (1);
+	return (b);
 }

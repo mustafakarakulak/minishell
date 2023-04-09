@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/08 16:47:08 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/08 19:46:36 by mkarakul         ###   ########.fr       */
+/*   Created: 2022/12/13 14:03:21 by mkarakul          #+#    #+#             */
+/*   Updated: 2022/12/13 14:03:55 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int	ft_strcmp(char *s1, char *s2)
+char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 {
-	int	i;
+	size_t		pos;
 
-	i = 0;
-	while (s1[i] && s2[i])
+	if (*to_find == '\0')
+		return ((char *)str);
+	pos = ft_strlen((char *)to_find);
+	while (*str != '\0' && len-- >= pos)
 	{
-		if (s1[i] != s2[i])
-			return (0);
-		i++;
+		if (*str == *to_find && ft_memcmp(str, to_find, pos) == 0)
+			return ((char *)str);
+		str++;
 	}
-	return (1);
+	return (NULL);
 }
