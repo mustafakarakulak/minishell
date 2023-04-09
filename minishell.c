@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:00:19 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/09 18:00:29 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/04/09 20:41:51 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,10 @@ void	exec_shell(char **envp, t_env *data)
 		printf("\033[32m╭─%s@\033[0m", get_username(envp));
 		line = readline("\033[32mminishell$\n╰─$ \033[0m");
 		add_history(line);
-		write_history("/Users/mkarakul/Desktop/projemini/log/.bash_history");
-		ft_command_checker(line, data);
+		//write_history("/Users/mkarakul/Desktop/projemini/log/.bash_history");
+		args = ft_command_checker(line, data);
+		if (!args[0])
+			continue ;
 		if (ft_strcmp(args[0], "exit\n"))
 			break ;
 		error_checker(data, envp);

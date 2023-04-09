@@ -6,13 +6,13 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:22:06 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/09 17:56:01 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/04/09 20:38:08 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_command_checker(char *str, t_env *data)
+char	**ft_command_checker(char *str, t_env *data)
 {
 	char	**line;
 	int		i;
@@ -28,7 +28,7 @@ int	ft_command_checker(char *str, t_env *data)
 		data->input[data->count++] = ft_strdup(line[data->count]);
 		i--;
 	}
-	return (0);
+	return (line);
 }
 
 void error_checker(t_env *data, char **env)
