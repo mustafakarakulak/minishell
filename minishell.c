@@ -6,17 +6,18 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:00:19 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/09 20:41:51 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/04/10 18:45:45 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char *get_username(char **envp)
+char	*get_username(char **envp)
 {
-	char *username = NULL;
-	int i;
+	char	*username;
+	int		i;
 
+	username = NULL;
 	i = 0;
 
 	while (envp[i])
@@ -24,33 +25,42 @@ char *get_username(char **envp)
 		if (ft_strncmp(envp[i], "USER=", 5) == 0)
 		{
 			username = envp[i] + 5;
-			break;
+			break ;
 		}
 		i++;
 	}
 	return (username);
 }
 
-void	exec_shell(char **envp, t_env *data)
+// write_history("/Users/mkarakul/Desktop/projemini/log/.bash_history");
+void exec_shell(char **envp, t_env *data)
 {
-	char	*line;
-	char	**args;
-	int		status;
-	
+	char *line;
+	char **args;
+	int status;
+
 	while (1)
 	{
 		printf("\033[32m╭─%s@\033[0m", get_username(envp));
 		line = readline("\033[32mminishell$\n╰─$ \033[0m");
 		add_history(line);
-		//write_history("/Users/mkarakul/Desktop/projemini/log/.bash_history");
 		args = ft_command_checker(line, data);
 		if (!args[0])
 			continue ;
-		if (ft_strcmp(args[0], "exit\n"))
+		if (ft_strcmp(args[0], "exit"))
 			break ;
 		error_checker(data, envp);
 		if (fork() == 0)
 		{
+			if (ft_strcmp(args[0], "ls"))
+				execve("/bin/ls", args, NULL);
+			else if (ft_strcmp(args[0], "cat"))
+			{
+				read_cat(args[1]);
+				exit(1);
+			}
+			else if (ft_strcmp(args[0], "clear"))
+				clear_screen();
 			execve(args[0], args, envp);
 			perror("miniShell");
 			exit(1);

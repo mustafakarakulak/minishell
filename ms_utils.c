@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 17:22:06 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/09 20:38:08 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/04/10 18:46:17 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	**ft_command_checker(char *str, t_env *data)
 	return (line);
 }
 
-void error_checker(t_env *data, char **env)
+void	error_checker(t_env *data, char **env)
 {
 	if (ft_strcmp(data->input[0], "history\n"))
 	{

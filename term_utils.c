@@ -1,26 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   term_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/08 16:47:08 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/10 18:45:22 by mkarakul         ###   ########.fr       */
+/*   Created: 2023/04/10 18:26:23 by mkarakul          #+#    #+#             */
+/*   Updated: 2023/04/10 19:10:20 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_strcmp(char *s1, char *s2)
+void	clear_screen(void)
 {
-	while (*s1 && *s2 && (*s1 == *s2))
+	//const char	*clear_screen_asci = "\e[1;1H\e[2J";
+
+	//write (STDOUT_FILENO, clear_screen_asci, 12);
+	printf("\033[2J");
+	printf("\033[%d;%dH", 0, 0);
+}
+
+char *read_cat(char *str)
+{
+	int fd;
+	char buf[1024];
+	int n;
+
+	n = 0;
+	fd = open(str, O_RDONLY);
+	while ((n = read(fd, buf, sizeof(buf))) > 0)
 	{
-		s1++;
-		s2++;
+		write(STDOUT_FILENO, buf, n);
 	}
-	if (*s1 == '\0' && *s2 == '\0')
-		return (1);
-	else
-		return (0);
+	write (1, "\0", 1");
+	close(fd);
+	return (str);
 }
