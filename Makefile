@@ -10,5 +10,5 @@ fclean:
 git:
 	git add .
 	git status
-	git commit -m "second day"
+	git commit -m "4 th day"
 	git push
