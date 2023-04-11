@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:00:19 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/10 20:40:39 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/04/11 14:55:37 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,30 @@ char	*get_username(char **envp)
 	return (username);
 }
 
-// write_history("/Users/mkarakul/Desktop/projemini/log/.bash_history");
-void control_shell(char **envp, t_env *data)
+void	exec_shell(t_env *data, char **args, int status, char **envp)
+{
+	if (fork() == 0)
+	{
+		if (ft_strcmp(args[0], "ls"))
+			execve("/bin/ls", args, NULL);
+		else if (ft_strcmp(args[0], "cat"))
+		{
+			read_cat(args[1]);
+			exit(1);
+		}
+		else if (ft_strcmp(args[0], "clear"))
+			clear_screen();
+		execve(args[0], args, envp);
+		perror("miniShell");
+		exit(1);
+	}
+	else
+	{
+		wait(&status);
+	}
+}
+
+void	control_shell(char **envp, t_env *data)
 {
 	char	*line;
 	char	**args;
@@ -50,25 +72,7 @@ void control_shell(char **envp, t_env *data)
 		if (ft_strcmp(args[0], "exit"))
 			break ;
 		error_checker(data, envp);
-		if (fork() == 0)
-		{
-			if (ft_strcmp(args[0], "ls"))
-				execve("/bin/ls", args, NULL);
-			else if (ft_strcmp(args[0], "cat"))
-			{
-				read_cat(args[1]);
-				exit(1);
-			}
-			else if (ft_strcmp(args[0], "clear"))
-				clear_screen();
-			execve(args[0], args, envp);
-			perror("miniShell");
-			exit(1);
-		}
-		else
-		{
-			wait(&status);
-		}
+		exec_shell(data, args, status, envp);
 	}
 }
 
