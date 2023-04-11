@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 16:32:48 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/11 14:45:52 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/04/11 16:13:56 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,6 @@
 
 typedef struct s_env
 {
-	char	*env;
-	char	**log;
-	int		log_i;
-	char	*name;
-	char	*value;
-	char	*cmd;
-	char	*param;
 	char	**input;
 	char	*username;
 	int		count;
@@ -41,10 +34,11 @@ int		ft_strcmp(char *s1, char *s2);
 
 // ms_utils
 char	**ft_command_checker(char *str, t_env *data);
-void	error_checker(t_env *data, char **env);
 void	control_shell(char **envp, t_env *data);
 
 char	*read_cat(char *str);
 void	clear_screen(void);
+
+t_env	*parse_env(t_env *env, char **envp);
 
 #endif

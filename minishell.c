@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:00:19 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/11 14:55:37 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/04/11 16:13:06 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ char	*get_username(char **envp)
 
 	username = NULL;
 	i = 0;
-
 	while (envp[i])
 	{
 		if (ft_strncmp(envp[i], "USER=", 5) == 0)
@@ -71,7 +70,6 @@ void	control_shell(char **envp, t_env *data)
 			continue ;
 		if (ft_strcmp(args[0], "exit"))
 			break ;
-		error_checker(data, envp);
 		exec_shell(data, args, status, envp);
 	}
 }
