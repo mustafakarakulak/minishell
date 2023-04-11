@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 16:32:48 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/11 16:13:56 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/04/11 18:10:09 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <fcntl.h>
+# include <dirent.h>
 
 typedef struct s_env
 {
@@ -40,5 +41,6 @@ char	*read_cat(char *str);
 void	clear_screen(void);
 
 t_env	*parse_env(t_env *env, char **envp);
+void	ft_execve(t_env *data, char **args, char **envp);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:00:19 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/11 16:21:36 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/04/11 16:38:10 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,7 @@ char	*get_username(char **envp)
 void	exec_shell(t_env *data, char **args, int status, char **envp)
 {
 	if (fork() == 0)
-	{
-		if (ft_strcmp(args[0], "ls"))
-			execve("/bin/ls", args, envp);
-		else if (ft_strcmp(args[0], "cat"))
-		{
-			read_cat(args[1]);
-			exit(1);
-		}
-		else if (ft_strcmp(args[0], "clear"))
-			clear_screen();
-		execve(args[0], args, envp);
-		perror("miniShell");
-		exit(1);
-	}
+		ft_execve(data, args, envp);
 	else
 	{
 		wait(&status);
