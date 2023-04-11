@@ -6,68 +6,19 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:17:14 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/11 18:17:17 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/04/11 19:07:44 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int cd(const char *path)
+int	control_bin2(char **args, char *path, int j, char *dir)
 {
-	DIR *dir;
-	struct dirent *entry;
-	char buf[1024];
-	int ret = -1;
+	int		i;
+	char	*tmp;
 
-	if ((dir = opendir(path)) == NULL)
-	{
-		perror(path);
-		return -1;
-	}
-
-	while ((entry = readdir(dir)) != NULL)
-	{
-		if (entry->d_type == DT_DIR)
-		{
-			if (strcmp(entry->d_name, ".") == 0 || strcmp(entry->d_name, "..") == 0)
-				continue;
-			if (strcmp(entry->d_name, path) == 0)
-			{
-				snprintf(buf, sizeof(buf), "%s/%s", path, entry->d_name);
-				ret = chdir(buf);
-				break;
-			}
-		}
-	}
-
-	closedir(dir);
-	return ret;
-}
-
-int	control_bin(t_env *data, char **args, char **envp)
-{
-	int i, j;
-	char	*path, *dir, *tmp;
-
-	if (ft_strcmp(args[0], "cd") == 0)
-	{
-		if (args[1])
-			cd(args[1]);
-		else
-			perror("allah");
-		return (0);
-	}
 	i = 0;
-	while (envp[i])
-	{
-		if (ft_strncmp(envp[i], "PATH=", 5) == 0)
-		{
-			path = envp[i] + 5;
-			break ;
-		}
-		i++;
-	}
-	i = 0;
+	tmp = NULL;
 	while (path[i])
 	{
 		j = i;
@@ -89,10 +40,37 @@ int	control_bin(t_env *data, char **args, char **envp)
 	return (0);
 }
 
+int	control_bin(t_env *data, char **args, char **envp)
+{
+	int		i;
+	int		j;
+	char	*path;
+	char	*dir;
+
+	i = 0;
+	while (envp[i])
+	{
+		if (ft_strncmp(envp[i], "PATH=", 5) == 0)
+		{
+			path = envp[i] + 5;
+			break ;
+		}
+		i++;
+	}
+	i = 0;
+	if (control_bin2(args, path, j, dir))
+		return (1);
+	return (0);
+}
+
+
 void	ft_execve(t_env *data, char **args, char **envp)
 {
 	if (control_bin(data, args, envp))
 		execve(args[0], args, envp);
 	else
 		perror("miniShell");
+	free(args);
+	free(data);
+	free(envp);
 }
