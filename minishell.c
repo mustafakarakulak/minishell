@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:00:19 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/25 16:19:39 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/04/25 19:39:41 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ void	control_shell(char **envp, t_env *data)
 			continue ;
 		if (ft_strcmp(args[0], "exit"))
 			break ;
-		exec_shell(data, args, status, envp);
+		if (!builtin(data, args, envp))
+			exec_shell(data, args, status, envp);
 		free(line);
 		free(args);
 	}

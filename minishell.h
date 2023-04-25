@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 16:32:48 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/25 16:24:51 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/04/25 18:42:44 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_env
 	int		value;
 	char	*key_str;
 	char	*value_str;
+	char	**envp;
 }				t_env;
 
 typedef struct s_data
@@ -48,7 +49,7 @@ void	control_shell(char **envp, t_env *data);
 
 char	*read_cat(char *str);
 void	clear_screen(void);
-
+int		builtin(t_env *data, char **args, char **envp);
 t_env	*parse_env(t_env *env, char **envp);
 void	ft_execve(t_env *data, char **args, char **envp);
 
