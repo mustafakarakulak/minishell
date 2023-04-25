@@ -52,7 +52,7 @@ BONUSOBJ = $(SRCBONUS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(BONUSOBJ)
 	@ar -rcs $(NAME) $(OBJ)
 
 $(OBJ): $(SRC)

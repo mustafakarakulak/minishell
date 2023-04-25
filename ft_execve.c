@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:17:14 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/11 19:07:44 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/04/25 16:30:51 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ void	ft_execve(t_env *data, char **args, char **envp)
 	if (control_bin(data, args, envp))
 		execve(args[0], args, envp);
 	else
-		perror("miniShell");
-	free(args);
-	free(data);
-	free(envp);
+	{
+		printf("minishell: %s: command not found\n", args[0]);
+		exit (1);
+	}
 }

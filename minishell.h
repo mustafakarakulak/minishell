@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 16:32:48 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/11 18:10:09 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/04/25 16:24:51 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,16 @@ typedef struct s_env
 	char	**input;
 	char	*username;
 	int		count;
+	int		key;
+	int		value;
+	char	*key_str;
+	char	*value_str;
 }				t_env;
+
+typedef struct s_data
+{
+	t_env	*env;
+}				t_data;
 
 //utils
 int		ft_strcmp(char *s1, char *s2);
