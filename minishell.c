@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:00:19 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/25 19:39:41 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/04/26 14:55:49 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,9 @@ void	control_shell(char **envp, t_env *data)
 
 	while (1)
 	{
-		printf("\033[31m╭─%s@\033[0m", get_username(envp));
-		line = readline("\033[31mminishell$\n╰─$ \033[0m");
+		printf("\033[31m╭─%s@\033[0m\033[31mminishell$\n╰─$ \033[0m",
+			get_username(envp));
+		line = readline("");
 		add_history(line);
 		args = ft_command_checker(line, data);
 		if (!args[0])
