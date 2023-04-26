@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:00:19 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/26 14:55:49 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/04/26 15:01:20 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,11 @@ void	control_shell(char **envp, t_env *data)
 	char	*line;
 	char	**args;
 	int		status;
+	int		i;
 
 	while (1)
 	{
+		i = -1;
 		printf("\033[31m╭─%s@\033[0m\033[31mminishell$\n╰─$ \033[0m",
 			get_username(envp));
 		line = readline("");
@@ -61,6 +63,8 @@ void	control_shell(char **envp, t_env *data)
 		if (!builtin(data, args, envp))
 			exec_shell(data, args, status, envp);
 		free(line);
+		while (args[++i])
+			free(args[i]);
 		free(args);
 	}
 }
@@ -71,6 +75,5 @@ int	main(int ac, char **av, char **env)
 
 	data = (t_env *)malloc(sizeof(t_env));
 	control_shell(env, data);
-	free(data);
 	return (0);
 }
