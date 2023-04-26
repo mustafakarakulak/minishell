@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 16:32:48 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/25 18:42:44 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/04/26 15:16:08 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ int		ft_strcmp(char *s1, char *s2);
 char	**ft_command_checker(char *str, t_env *data);
 void	control_shell(char **envp, t_env *data);
 
-char	*read_cat(char *str);
-void	clear_screen(void);
 int		builtin(t_env *data, char **args, char **envp);
 t_env	*parse_env(t_env *env, char **envp);
 void	ft_execve(t_env *data, char **args, char **envp);
