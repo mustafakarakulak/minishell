@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:17:14 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/25 16:30:51 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/04/26 21:07:00 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ int	control_bin(t_env *data, char **args, char **envp)
 		return (1);
 	return (0);
 }
-
 
 void	ft_execve(t_env *data, char **args, char **envp)
 {

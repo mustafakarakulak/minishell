@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:00:19 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/26 19:04:52 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/04/26 22:09:10 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	exec_shell(t_env *data, char **args, int status, char **envp)
 		wait(&status);
 }
 
-void	control_shell(char **envp, t_env *data)
+void	start(t_env *data)
 {
 	char	*line;
 	int		status;
@@ -48,7 +48,7 @@ void	control_shell(char **envp, t_env *data)
 	while (1)
 	{
 		i = -1;
-		printf("\033[31m╭─%s@\033[0m\033", get_username(envp));
+		printf("\033[31m╭─%s@\033[0m\033", get_username(data->envp));
 		line = readline("[31mminishell$\n╰─$ \033[0m");
 		add_history(line);
 		data->line = ft_command_checker(line, data);
@@ -56,8 +56,8 @@ void	control_shell(char **envp, t_env *data)
 			continue ;
 		if (ft_strcmp(data->line[0], "exit"))
 			break ;
-		if (builtin(data, data->line, envp) == 0)
-			exec_shell(data, data->line, status, envp);
+		if (builtin(data, data->line, data->envp))
+			exec_shell(data, data->line, status, data->envp);
 		free (line);
 		while (data->line[++i])
 			free(data->line[i]);
@@ -71,7 +71,7 @@ int	main(int ac, char **av, char **env)
 
 	data = (t_env *)malloc(sizeof(t_env));
 	data->envp = env;
-	control_shell(env, data);
+	start(data);
 	free(data->line);
 	return (0);
 }

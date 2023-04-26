@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 16:32:48 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/26 15:24:35 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/04/26 22:04:54 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,16 @@ int		ft_strcmp(char *s1, char *s2);
 
 // ms_utils
 char	**ft_command_checker(char *str, t_env *data);
-void	control_shell(char **envp, t_env *data);
-
 int		builtin(t_env *data, char **args, char **envp);
 t_env	*parse_env(t_env *env, char **envp);
 void	ft_execve(t_env *data, char **args, char **envp);
+
+//builtin
+void	ft_pwd(t_env *data, char **args);
+void	*ft_addenv(t_env *data, char *name, char **args);
+void	*ft_delenv(t_env *data, char *name, char **args);
+void	*ft_getenv(t_env *data, char *name, char **args);
+void	ft_env(t_env *data, char **args, char **envp);
+char	*ft_strcpy(char *dest, const char *src);
 
 #endif
