@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 16:20:01 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/26 15:04:27 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/04/26 17:07:49 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,10 @@
 char	**ft_command_checker(char *str, t_env *data)
 {
 	char	**line;
-	int		i;
 
 	data->count = 0;
-	i = 0;
-	line = ft_split(str, ' ');
-	while (line[i])
-		i++;
-	//data->input = malloc(sizeof(char *) * i);
-	//while (i > 0)
-	//{
-	//	data->input[data->count++] = ft_strdup(line[data->count]);
-	//	i--;
-	//}
+	line = ft_split(str, 32);
+	while (line[data->count])
+		data->count++;
 	return (line);
 }

@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:00:19 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/26 15:15:07 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/04/26 19:04:52 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,12 @@ void	exec_shell(t_env *data, char **args, int status, char **envp)
 	if (fork() == 0)
 		ft_execve(data, args, envp);
 	else
-	{
 		wait(&status);
-	}
 }
 
 void	control_shell(char **envp, t_env *data)
 {
 	char	*line;
-	char	**args;
 	int		status;
 	int		i;
 
@@ -54,17 +51,17 @@ void	control_shell(char **envp, t_env *data)
 		printf("\033[31m╭─%s@\033[0m\033", get_username(envp));
 		line = readline("[31mminishell$\n╰─$ \033[0m");
 		add_history(line);
-		args = ft_command_checker(line, data);
-		if (!args[0])
+		data->line = ft_command_checker(line, data);
+		if (!data->line[0])
 			continue ;
-		if (ft_strcmp(args[0], "exit"))
+		if (ft_strcmp(data->line[0], "exit"))
 			break ;
-		if (!builtin(data, args, envp))
-			exec_shell(data, args, status, envp);
+		if (builtin(data, data->line, envp) == 0)
+			exec_shell(data, data->line, status, envp);
 		free (line);
-		while (args[++i])
-			free (args[i]);
-		free (args);
+		while (data->line[++i])
+			free(data->line[i]);
+		free(data->line);
 	}
 }
 
@@ -73,6 +70,8 @@ int	main(int ac, char **av, char **env)
 	t_env	*data;
 
 	data = (t_env *)malloc(sizeof(t_env));
+	data->envp = env;
 	control_shell(env, data);
+	free(data->line);
 	return (0);
 }
