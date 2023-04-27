@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 16:32:48 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/26 22:04:54 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/04/27 16:47:05 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,10 @@
 
 typedef struct s_env
 {
-	char	**line;
+	char	**prompt;
+	char	*line;
 	char	*username;
 	int		count;
-	int		key;
-	int		value;
-	char	*key_str;
-	char	*value_str;
 	char	**envp;
 }				t_env;
 
@@ -56,5 +53,7 @@ void	*ft_delenv(t_env *data, char *name, char **args);
 void	*ft_getenv(t_env *data, char *name, char **args);
 void	ft_env(t_env *data, char **args, char **envp);
 char	*ft_strcpy(char *dest, const char *src);
+void	parsing_line(t_env *data, char **envp);
+void	all_free(t_env *data);
 
 #endif
