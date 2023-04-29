@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:00:19 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/27 18:17:30 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/04/29 12:43:04 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	start(t_env *data)
 	while (1)
 	{
 		printf("\033[31m%s@\033[0m\033", get_username(data->envp));
-		data->line = readline("[31mminishell-$>\033[0m");
+		data->line = readline("[31mminishell-$> \033[0m");
 		parsing_line(data, data->envp);
 		add_history(data->line);
 		if (!data->prompt[0])
