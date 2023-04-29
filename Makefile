@@ -1,6 +1,6 @@
 all:
-	gcc parsing.c free.c builtin.c env_utils.c ft_strcpy.c checker.c minishell.c utils.c \
-	libft/libft.a ft_execve.c -lreadline -o minishell
+	gcc libft/libft.a parsing.c free.c builtin.c env_utils.c \
+	checker.c minishell.c utils.c execve.c -lreadline -o minishell
 
 clean:
 	rm -rf minishell

@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 16:32:48 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/27 16:47:05 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/04/29 17:04:46 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ typedef struct s_env
 	char	*username;
 	int		count;
 	char	**envp;
+	char	**parameter;
+	char	**args;
+	char	**command;
 }				t_env;
 
 typedef struct s_data
