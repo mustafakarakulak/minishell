@@ -1,6 +1,7 @@
 all:
 	gcc libft/libft.a srcs/parsing/parsing.c srcs/utils/free.c srcs/builtin/builtin.c srcs/utils/env_utils.c \
-	srcs/check/checker.c srcs/minishell.c srcs/utils/utils.c srcs/execute/execve.c -lreadline -o minishell
+	srcs/check/checker.c srcs/minishell.c srcs/utils/utils.c srcs/execute/execve.c \
+	srcs/builtin/ft_cd.c srcs/builtin/ft_echo.c -lreadline -o minishell
 
 clean:
 	rm -rf minishell

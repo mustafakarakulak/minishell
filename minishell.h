@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 16:32:48 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/29 17:04:46 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/05/04 19:09:48 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,9 @@ void	ft_env(t_env *data, char **args, char **envp);
 char	*ft_strcpy(char *dest, const char *src);
 void	parsing_line(t_env *data, char **envp);
 void	all_free(t_env *data);
+
+void	ft_echo(char **input);
+void	ft_cd(char **execute);
+
 
 #endif

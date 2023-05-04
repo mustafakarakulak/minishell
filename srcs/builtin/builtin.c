@@ -6,26 +6,11 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 18:34:03 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/04 15:24:30 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/05/04 19:09:59 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
-
-void	ft_echo(t_env *data, char **args)
-{
-	int	i;
-
-	i = 1;
-	while (args[i])
-	{
-		ft_putstr_fd(args[i], 1);
-		if (args[i + 1])
-			ft_putstr_fd(" ", 1);
-		i++;
-	}
-	ft_putstr_fd("\n", 1);
-}
 
 void	ft_unset(t_env *data, char **args)
 {
@@ -52,34 +37,12 @@ void	ft_export(t_env *data, char **args)
 	}
 }
 
-void	ft_cd(t_env *data, char **args)
-{
-	char	*path;
-
-	if (args[1] == NULL)
-	{
-		path = ft_getenv(data, "HOME", args);
-		if (path == NULL)
-		{
-			ft_putstr_fd("minishell: cd: HOME not set\n", 2);
-			return ;
-		}
-	}
-	else
-		path = args[1];
-	if (chdir(path) != 0)
-	{
-		ft_putstr_fd("minishell: cd: ", 2);
-		ft_putstr_fd(path, 2);
-	}
-}
-
 int	builtin(t_env *data, char **args, char **envp)
 {
 	if (ft_strcmp(args[0], "echo"))
-		ft_echo(data, args);
+		ft_echo(args);
 	else if (ft_strcmp(args[0], "cd"))
-		ft_cd(data, args);
+		ft_cd(args);
 	else if (ft_strcmp(args[0], "pwd"))
 		ft_pwd(data, args);
 	else if (ft_strcmp(args[0], "export"))
