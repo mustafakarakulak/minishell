@@ -6,11 +6,11 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:17:14 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/29 15:32:40 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/05/04 15:24:47 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../minishell.h"
 
 int	control_bin2(char **args, char *path, int j, char *dir)
 {

@@ -1,24 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/25 16:20:01 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/29 17:10:26 by mkarakul         ###   ########.fr       */
+/*   Created: 2023/04/08 16:47:08 by mkarakul          #+#    #+#             */
+/*   Updated: 2023/05/04 15:25:13 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../minishell.h"
 
-char	**ft_command_checker(char *str, t_env *data)
+int	ft_strcmp(char *s1, char *s2)
 {
-	char	**line;
+	while (*s1 && *s2 && (*s1 == *s2))
+	{
+		s1++;
+		s2++;
+	}
+	if (*s1 == '\0' && *s2 == '\0')
+		return (1);
+	else
+		return (0);
+}
 
-	data->count = 0;
-	line = ft_split(str, 32);
-	while (line[data->count])
-		data->count++;
-	return (line);
+char	*ft_strcpy(char *dest, const char *src)
+{
+	int	i;
+
+	i = 0;
+	while (src[i])
+	{
+		dest[i] = src[i];
+	}
+	dest[i] = '\0';
+	return (dest);
 }

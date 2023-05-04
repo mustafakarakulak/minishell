@@ -6,11 +6,11 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 16:26:30 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/29 17:09:22 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/05/04 15:24:52 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../minishell.h"
 
 void	found_parameter(t_env *data)
 {

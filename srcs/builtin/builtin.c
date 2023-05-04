@@ -6,11 +6,11 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 18:34:03 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/04/27 16:21:23 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/05/04 15:24:30 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../minishell.h"
 
 void	ft_echo(t_env *data, char **args)
 {
