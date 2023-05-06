@@ -1,4 +1,4 @@
-msg = default commit message
+m = default commit message
 
 all:
 	gcc libft/libft.a srcs/parsing/parsing.c srcs/utils/free.c \
@@ -16,5 +16,5 @@ fclean: clean
 git:
 	git add .
 	git status
-	git commit -m "$(msg)"
+	git commit -m "$(m)"
 	git push
