@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 21:05:32 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/04 15:25:07 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/05/07 18:08:38 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,22 @@ void	*ft_addenv(t_env *data, char *name, char **args)
 	return (args[i]);
 }
 
-void	*ft_delenv(t_env *data, char *name, char **args)
+void	*ft_delenv(t_env *data, char *name)
 {
 	int	i;
 
 	i = 0;
-	while (args[i])
+	while (data->envp[i])
 	{
-		if (ft_strncmp(args[i], name, ft_strlen(name)) == 0)
+		if (ft_strncmp(data->envp[i], name, ft_strlen(name)) != 0)
 		{
-			free(args[i]);
-			args[i] = NULL;
-			return (args[i]);
+			//free(data->envp[i]);
+			while (data->envp[i + 1])
+			{
+				data->envp[i] = data->envp[i + 1];
+				i++;
+			}
+			return (data->envp[i]);
 		}
 		i++;
 	}
