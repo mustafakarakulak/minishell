@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 16:32:48 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/06 18:42:38 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/05/07 16:49:10 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	all_free(t_env *data);
 
 void	ft_echo(char **input);
 void	ft_cd(char **execute);
-void	ft_export(t_env *data, char **args);
+void	ft_export(t_env *data);
 void	ft_unset(t_env *data, char **args);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 18:34:03 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/06 18:40:07 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/05/07 16:47:41 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	builtin(t_env *data, char **args, char **envp)
 	else if (ft_strcmp(args[0], "pwd"))
 		ft_pwd(data, args);
 	else if (ft_strcmp(args[0], "export"))
-		ft_export(data, args);
+		ft_export(data);
 	else if (ft_strcmp(args[0], "unset"))
 		ft_unset(data, args);
 	else if (ft_strcmp(args[0], "env"))
