@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 19:04:59 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/04 19:21:34 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/05/08 19:56:04 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_echo(char **input)
 	i = 1;
 	if (!input[1])
 		return ;
-	while (ft_strcmp(input[i], "-n") == 1 && input[i])
+	if (ft_strcmp(input[i], "-n") == 1 && input[i])
 		i++;
 	while (input[i])
 	{

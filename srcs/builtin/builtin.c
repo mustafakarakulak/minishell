@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 18:34:03 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/07 17:06:36 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/05/08 20:08:46 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	builtin(t_env *data, char **args, char **envp)
 	else if (ft_strcmp(args[0], "export"))
 		ft_export(data);
 	else if (ft_strcmp(args[0], "unset"))
-		ft_unset(data, args);
+		ft_unset(data);
 	else if (ft_strcmp(args[0], "env"))
 		ft_env(data, args, envp);
 	else
