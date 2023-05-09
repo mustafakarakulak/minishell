@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 16:32:48 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/09 03:04:26 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/05/09 04:19:16 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_env
 	char	*username;
 	int		count;
 	char	**envp;
+	char	**ex_path;
 	char	**parameter;
 	char	**args;
 	char	**command;
@@ -51,7 +52,7 @@ void	ft_execve(t_env *data, char **args, char **envp);
 
 //builtin
 void	ft_pwd(t_env *data, char **args);
-void	*ft_addenv(t_env *data, char *name, char **args);
+void	*ft_addenv(t_env *data);
 void	*ft_delenv(t_env *data, int i, int env_c);
 void	*ft_getenv(t_env *data, char *name, char **args);
 void	ft_env(t_env *data, char **args, char **envp);
