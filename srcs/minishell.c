@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:00:19 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/08 22:32:14 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/05/09 03:09:51 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ int	main(int ac, char **av, char **env)
 
 	data = (t_env *)malloc(sizeof(t_env));
 	data->envp = env;
-	printf("%s", data->envp[1]);
 	start(data);
 	return (0);
 }
