@@ -6,7 +6,7 @@
 /*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:41:07 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/10 18:00:21 by mustafakara      ###   ########.fr       */
+/*   Updated: 2023/05/10 20:39:29 by mustafakara      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,5 @@ void	ft_export(t_env *data)
 	if (!data->prompt[1] || ft_strcmp(data->prompt[1], "-p") == 1)
 		ft_export_path(data);
 	else
-		ft_addenv(data);
+		data->ex_path = ft_addenv(data);
 }

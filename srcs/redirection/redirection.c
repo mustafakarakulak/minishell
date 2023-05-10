@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   redirection.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 01:23:42 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/09 03:07:32 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/05/10 19:23:19 by mustafakara      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-void	*ft_pipe(t_env *data, char *args)
+void	*ft_pipe(t_env *data)
 {
 	int		fd[2];
 	char	**cmd;
 
-	cmd = ft_split(args, ' ');
+	cmd = ft_split(data->line, ' ');
 	pipe(fd);
 	if (fork() == 0)
 	{
@@ -34,12 +34,12 @@ void	*ft_pipe(t_env *data, char *args)
 	return (0);
 }
 
-void	*ft_redirection_out(t_env *data, char *args)
+void	*ft_redirection_out(t_env *data)
 {
 	int		fd;
 	char	**cmd;
 
-	cmd = ft_split(args, ' ');
+	cmd = ft_split(data->line, ' ');
 	fd = open(cmd[1], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	dup2(fd, STDOUT_FILENO);
 	close(fd);
@@ -47,12 +47,12 @@ void	*ft_redirection_out(t_env *data, char *args)
 	return (0);
 }
 
-void	*ft_redirection_out_append(t_env *data, char *args)
+void	*ft_redirection_out_append(t_env *data)
 {
 	int		fd;
 	char	**cmd;
 
-	cmd = ft_split(args, ' ');
+	cmd = ft_split(data->line, ' ');
 	fd = open(cmd[1], O_WRONLY | O_CREAT | O_APPEND, 0644);
 	dup2(fd, STDOUT_FILENO);
 	close(fd);
@@ -60,12 +60,12 @@ void	*ft_redirection_out_append(t_env *data, char *args)
 	return (0);
 }
 
-void	*ft_redirection_in(t_env *data, char *args)
+void	*ft_redirection_in(t_env *data)
 {
 	int		fd;
 	char	**cmd;
 
-	cmd = ft_split(args, ' ');
+	cmd = ft_split(data->line, ' ');
 	fd = open(cmd[1], O_RDONLY);
 	dup2(fd, STDIN_FILENO);
 	close(fd);
@@ -73,12 +73,12 @@ void	*ft_redirection_in(t_env *data, char *args)
 	return (0);
 }
 
-void	*ft_redirection_in_append(t_env *data, char *args)
+void	*ft_redirection_in_append(t_env *data)
 {
 	int		fd;
 	char	**cmd;
 
-	cmd = ft_split(args, ' ');
+	cmd = ft_split(data->line, ' ');
 	fd = open(cmd[1], O_RDONLY | O_APPEND);
 	dup2(fd, STDIN_FILENO);
 	close(fd);
@@ -86,17 +86,19 @@ void	*ft_redirection_in_append(t_env *data, char *args)
 	return (0);
 }
 
-void	*ft_redirection_control(t_env *data, char *args)
+int	ft_redirection_control(t_env *data)
 {
-	if (ft_strcmp(args, ">"))
-		ft_redirection_out(data, args);
-	else if (ft_strcmp(args, ">>"))
-		ft_redirection_out_append(data, args);
-	else if (ft_strcmp(args, "<"))
-		ft_redirection_in(data, args);
-	else if (ft_strcmp(args, "<<"))
-		ft_redirection_in_append(data, args);
-	else if (ft_strcmp(args, "|"))
-		ft_pipe(data, args);
+	if (ft_strcmp(data->prompt[0], ">"))
+		ft_redirection_out(data);
+	else if (ft_strcmp(data->line, ">>"))
+		ft_redirection_out_append(data);
+	else if (ft_strcmp(data->line, "<"))
+		ft_redirection_in(data);
+	else if (ft_strcmp(data->line, "<<"))
+		ft_redirection_in_append(data);
+	else if (ft_strcmp(data->line, "|"))
+		ft_pipe(data);
+	else
+		return (1);
 	return (0);
 }

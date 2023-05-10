@@ -12,7 +12,7 @@
 
 #include "../../minishell.h"
 
-void	parsing_line(t_env *data, char **envp)
+void	parsing_line(t_env *data)
 {
 	data->prompt = ft_command_checker(data->line, data);
 }

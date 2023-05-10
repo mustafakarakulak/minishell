@@ -6,7 +6,7 @@
 /*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:00:19 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/10 18:00:39 by mustafakara      ###   ########.fr       */
+/*   Updated: 2023/05/10 19:28:07 by mustafakara      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ char	*get_username(char **envp)
 	return (username);
 }
 
-void	exec_shell(t_env *data, char **args, int status, char **envp)
+void	exec_shell(t_env *data, int status)
 {
 	if (fork() == 0)
-		ft_execve(data, args, envp);
+		ft_execve(data, data->prompt, data->envp);
 	else
 		wait(&status);
 }
@@ -47,14 +47,14 @@ void	start(t_env *data)
 	{
 		printf("\033[31m%s@\033[0m\033", get_username(data->envp));
 		data->line = readline("[31mminishell-$> \033[0m");
-		parsing_line(data, data->envp);
+		parsing_line(data);
 		add_history(data->line);
 		if (!data->prompt[0])
 			continue ;
 		if (ft_strcmp(data->prompt[0], "exit"))
 			break ;
-		if (builtin(data, data->prompt, data->envp))
-			exec_shell(data, data->prompt, status, data->envp);
+		if (builtin(data, data->prompt, data->envp) && ft_redirection_control(data))
+			exec_shell(data, status);
 		all_free(data);
 	}
 }

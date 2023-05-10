@@ -6,7 +6,7 @@
 /*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 21:05:32 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/10 17:51:53 by mustafakara      ###   ########.fr       */
+/*   Updated: 2023/05/10 20:28:28 by mustafakara      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_pwd(t_env *data, char **args)
 	free(path);
 }
 
-void	*ft_addenv(t_env *data)
+char	**ft_addenv(t_env *data)
 {
 	int		i;
 	char	**tmp;
@@ -35,10 +35,10 @@ void	*ft_addenv(t_env *data)
 		i++;
 	}
 	tmp[i] = data->prompt[1];
-	printf("%s\n", data->prompt[1]);
 	data->ex_path = tmp;
+	printf("%s\n", data->ex_path[i]);
 	free(tmp);
-	return (NULL);
+	return (data->ex_path);
 }
 
 void	*ft_delenv(t_env *data, int i, int env_c)
