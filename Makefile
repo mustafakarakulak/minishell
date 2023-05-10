@@ -8,9 +8,10 @@ all:
 	srcs/builtin/ft_export.c srcs/builtin/ft_unset.c srcs/redirection/redirection.c -lreadline -o minishell
 
 clean:
-	rm -rf minishell
+	rm -rf libft/*.o
 
-fclean: clean
+fclean:
+	rm -rf minishell
     $(clean)
 
 git:

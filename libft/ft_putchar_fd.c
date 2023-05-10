@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 02:38:31 by mkarakul          #+#    #+#             */
-/*   Updated: 2022/12/18 14:03:28 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/05/09 23:23:29 by mustafakara      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

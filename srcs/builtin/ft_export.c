@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:41:07 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/09 08:52:39 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/05/10 18:00:21 by mustafakara      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ void	*ft_export_path(t_env *data)
 
 	i = 0;
 	j = 0;
-	while (data->envp[i])
+	while (data->ex_path[i])
 	{
 		j = 0;
-		while (data->envp[i][j] != '=')
+		while (data->ex_path[i][j] != '=')
 			j++;
-		tmp = ft_substr(data->envp[i], 0, j);
+		tmp = ft_substr(data->ex_path[i], 0, j);
 		ft_putstr_fd("declare -x ", 1);
 		ft_putstr_fd(tmp, 1);
 		ft_putstr_fd("\n", 1);

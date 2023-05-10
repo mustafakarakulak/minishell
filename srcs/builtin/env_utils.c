@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 21:05:32 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/09 08:51:47 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/05/10 17:51:53 by mustafakara      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,15 @@ void	*ft_addenv(t_env *data)
 	char	**tmp;
 
 	i = 0;
-	tmp = malloc(sizeof(char **) * 1003);
-	while (data->envp[i])
+	tmp = malloc(sizeof(char **) * 10000000);
+	while (data->ex_path[i])
 	{
-		tmp[i] = data->envp[i];
+		tmp[i] = data->ex_path[i];
 		i++;
 	}
-	tmp[i] = "Mustafa=Mustafa";
-	data->envp = tmp;
+	tmp[i] = data->prompt[1];
+	printf("%s\n", data->prompt[1]);
+	data->ex_path = tmp;
 	free(tmp);
 	return (NULL);
 }
@@ -77,14 +78,14 @@ void	*ft_getenv(t_env *data, char *name, char **args)
 	return (NULL);
 }
 
-void	ft_env(t_env *data, char **args, char **envp)
+void	ft_env(t_env *data)
 {
 	int	i;
 
 	i = 0;
-	while (envp[i])
+	while (data->envp[i])
 	{
-		ft_putstr_fd(envp[i], 1);
+		ft_putstr_fd(data->envp[i], 1);
 		ft_putstr_fd("\n", 1);
 		i++;
 	}

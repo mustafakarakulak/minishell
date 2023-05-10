@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 16:32:48 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/09 04:19:16 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/05/10 17:45:05 by mustafakara      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	ft_pwd(t_env *data, char **args);
 void	*ft_addenv(t_env *data);
 void	*ft_delenv(t_env *data, int i, int env_c);
 void	*ft_getenv(t_env *data, char *name, char **args);
-void	ft_env(t_env *data, char **args, char **envp);
+void	ft_env(t_env *data);
 char	*ft_strcpy(char *dest, const char *src);
 void	parsing_line(t_env *data, char **envp);
 void	all_free(t_env *data);
