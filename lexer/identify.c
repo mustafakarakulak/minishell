@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   identify.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
+/*   By: spalta <spalta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 18:35:14 by serif             #+#    #+#             */
-/*   Updated: 2023/05/11 17:57:19 by mustafakara      ###   ########.fr       */
+/*   Updated: 2023/05/11 19:47:55 by spalta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	initilaze_metacharacter(t_arg	*node)
 			node->type = DOUBLE_OUTPUT_RDR;
 		else
 		{
+			printf ("redirection error >< ?\n");
 			exit (1);
 		}
 }
@@ -53,7 +54,7 @@ int	identify_token(t_arg	**prompt)
 	t_arg	*iter;
 
 	iter = *prompt;
-	while (iter->next)
+	while (iter)
 	{
 		if (contains_dollars(iter->arg))
 		{
@@ -67,5 +68,7 @@ int	identify_token(t_arg	**prompt)
 			iter->type = WORD;
 		if (iter->next)
 			iter = iter->next;
+		else
+			break;
 	}
 }

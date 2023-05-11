@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
+/*   By: spalta <spalta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:00:19 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/11 19:31:31 by mustafakara      ###   ########.fr       */
+/*   Updated: 2023/05/11 19:40:43 by spalta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,7 @@ void	start(t_env *data)
 		data->line = readline("[31mminishell-$> \033[0m");
 		//parsing_line(data);
 		ft_parse(&data);
-		printf("AAAA\n");
-		print_list(data->t_arg);
-		exit(1);
+		exit (1);
 		add_history(data->line);
 		if (!data->prompt[0])
 			continue ;
