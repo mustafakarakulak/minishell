@@ -6,7 +6,7 @@
 /*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 19:20:57 by spalta            #+#    #+#             */
-/*   Updated: 2023/05/11 18:48:18 by mustafakara      ###   ########.fr       */
+/*   Updated: 2023/05/11 19:29:50 by mustafakara      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,6 @@ int ft_parse(t_env **data)
 	line = ft_calloc(1, sizeof(t_arg));
 	tokenizer(&line, data);
 	identify_token(&line);
-	print_list(line);
+	(*data)->t_arg = line;
 	return (1);
 }

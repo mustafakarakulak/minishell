@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: spalta <spalta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 16:32:48 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/11 18:31:48 by spalta           ###   ########.fr       */
+/*   Updated: 2023/05/11 19:28:17 by mustafakara      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 
 typedef struct s_env
 {
+	t_arg	*t_arg;
 	char	**prompt;
 	char	*line;
 	char	*username;
