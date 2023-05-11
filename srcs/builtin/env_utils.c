@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   env_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
+/*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 21:05:32 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/10 20:28:28 by mustafakara      ###   ########.fr       */
+/*   Updated: 2023/05/11 21:36:09 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-void	ft_pwd(t_env *data, char **args)
+void	ft_pwd(t_env *data)
 {
 	char	*path;
 
