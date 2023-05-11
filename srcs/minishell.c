@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: spalta <spalta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:00:19 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/11 18:34:01 by spalta           ###   ########.fr       */
+/*   Updated: 2023/05/11 18:52:54 by mustafakara      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,15 @@ void	start(t_env *data)
 	{
 		printf("\033[31m%s@\033[0m\033", get_username(data->envp));
 		data->line = readline("[31mminishell-$> \033[0m");
+		parsing_line(data);
 		ft_parse(&data);
 		add_history(data->line);
 		if (!data->prompt[0])
 			continue ;
 		if (ft_strcmp(data->prompt[0], "exit"))
 			break ;
-		if (builtin(data, data->prompt, data->envp) && ft_redirection_control(data))
-			exec_shell(data, status);
+		//if (builtin(data, data->prompt, data->envp))
+		//	exec_shell(data, status);
 		all_free(data);
 	}
 }

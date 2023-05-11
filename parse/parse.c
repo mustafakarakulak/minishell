@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: spalta <spalta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 19:20:57 by spalta            #+#    #+#             */
-/*   Updated: 2023/05/11 18:35:58 by spalta           ###   ########.fr       */
+/*   Updated: 2023/05/11 18:48:18 by mustafakara      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,5 @@ int ft_parse(t_env **data)
 	tokenizer(&line, data);
 	identify_token(&line);
 	print_list(line);
-	exit (1);
 	return (1);
 }
