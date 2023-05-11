@@ -6,13 +6,14 @@
 /*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 16:32:48 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/10 20:28:55 by mustafakara      ###   ########.fr       */
+/*   Updated: 2023/05/11 18:22:42 by mustafakara      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+# include "parse/parse.h"
 # include "libft/libft.h"
 # include <stdio.h>
 # include <stdlib.h>
