@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
+/*   By: spalta <spalta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 19:20:57 by spalta            #+#    #+#             */
-/*   Updated: 2023/05/11 18:25:21 by mustafakara      ###   ########.fr       */
+/*   Updated: 2023/05/11 18:30:44 by spalta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ void	tokenizer(t_arg **prompt, t_env **data)
 	print_list(*prompt);
 }
 
-int ft_parse(void)
+int ft_parse(t_env **data)
 {
 	t_arg	*line;
-	t_env	*data;
+
 
 	line = ft_calloc(1, sizeof(t_arg));
-	tokenizer(&line, &data);
+	tokenizer(&line, data);
 	identify_token(&line);
 	print_list(line);	
 	return (1);

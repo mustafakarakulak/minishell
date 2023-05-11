@@ -43,5 +43,4 @@ void	split_by_redirection(t_arg **prompt);
 void	split_by_pipe(t_arg **prompt);
 int 	handle_character(t_arg **prompt, int (*checker)(char *));
 int		identify_token(t_arg	**prompt);
-int     ft_parse(void);
 #endif
