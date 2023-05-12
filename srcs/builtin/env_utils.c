@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 21:05:32 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/11 21:36:09 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/05/12 21:53:34 by mustafakara      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ char	**ft_addenv(t_env *data)
 {
 	int		i;
 	char	**tmp;
+	t_arg	*temp;
 
+	temp = data->t_arg;
+	temp = temp->next;
 	i = 0;
 	tmp = malloc(sizeof(char **) * 10000000);
 	while (data->ex_path[i])
@@ -34,9 +37,8 @@ char	**ft_addenv(t_env *data)
 		tmp[i] = data->ex_path[i];
 		i++;
 	}
-	tmp[i] = data->prompt[1];
+	tmp[i] = temp->arg;
 	data->ex_path = tmp;
-	printf("%s\n", data->ex_path[i]);
 	free(tmp);
 	return (data->ex_path);
 }
