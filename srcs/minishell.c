@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:00:19 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/12 18:15:29 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/05/12 22:14:28 by mustafakara      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	start(t_env *data)
 		temp = data->t_arg;
 		add_history(data->line);
 		data->prompt = ft_command_checker(data->line, data);
+		ft_token(data);
 		if (!temp)
 			continue ;
 		if (ft_strcmp(temp->arg, "exit"))

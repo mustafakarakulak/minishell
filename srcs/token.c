@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:29:36 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/12 18:17:53 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/05/12 22:14:59 by mustafakara      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,13 @@ void	ft_token(t_env *data)
 	int		i;
 
 	i = 0;
-	temp = malloc(sizeof(t_arg) * 1);
 	temp = data->t_arg;
-	data->command = malloc(sizeof(char *) * 4);
-	while (temp->arg)
+	data->command = malloc(sizeof(char *) * 100000);
+	while (temp)
 	{
 		data->command[i] = temp->arg;
 		i++;
-		if (temp->next)
+		if (temp)
 			temp = temp->next;
 	}
 }
