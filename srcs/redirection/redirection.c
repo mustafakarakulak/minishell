@@ -6,12 +6,12 @@
 /*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 01:23:42 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/10 19:23:19 by mustafakara      ###   ########.fr       */
+/*   Updated: 2023/05/12 11:40:50 by mustafakara      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
-
+/*
 void	*ft_pipe(t_env *data)
 {
 	int		fd[2];
@@ -23,13 +23,13 @@ void	*ft_pipe(t_env *data)
 	{
 		dup2(fd[1], STDOUT_FILENO);
 		close(fd[0]);
-		ft_execve(data, cmd, data->envp);
+		ft_execve(data);
 	}
 	else
 	{
 		dup2(fd[0], STDIN_FILENO);
 		close(fd[1]);
-		ft_execve(data, cmd, data->envp);
+		ft_execve(data);
 	}
 	return (0);
 }
@@ -43,7 +43,7 @@ void	*ft_redirection_out(t_env *data)
 	fd = open(cmd[1], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	dup2(fd, STDOUT_FILENO);
 	close(fd);
-	ft_execve(data, cmd, data->envp);
+	ft_execve(data);
 	return (0);
 }
 
@@ -56,7 +56,7 @@ void	*ft_redirection_out_append(t_env *data)
 	fd = open(cmd[1], O_WRONLY | O_CREAT | O_APPEND, 0644);
 	dup2(fd, STDOUT_FILENO);
 	close(fd);
-	ft_execve(data, cmd, data->envp);
+	ft_execve(data);
 	return (0);
 }
 
@@ -69,7 +69,7 @@ void	*ft_redirection_in(t_env *data)
 	fd = open(cmd[1], O_RDONLY);
 	dup2(fd, STDIN_FILENO);
 	close(fd);
-	ft_execve(data, cmd, data->envp);
+	ft_execve(data);
 	return (0);
 }
 
@@ -82,7 +82,7 @@ void	*ft_redirection_in_append(t_env *data)
 	fd = open(cmd[1], O_RDONLY | O_APPEND);
 	dup2(fd, STDIN_FILENO);
 	close(fd);
-	ft_execve(data, cmd, data->envp);
+	ft_execve(data);
 	return (0);
 }
 
@@ -102,3 +102,4 @@ int	ft_redirection_control(t_env *data)
 		return (1);
 	return (0);
 }
+*/

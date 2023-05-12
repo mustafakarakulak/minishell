@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   execve.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:17:14 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/04 15:24:47 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/05/12 11:54:40 by mustafakara      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-int	control_bin2(char **args, char *path, int j, char *dir)
+int	control_bin2(t_arg *temp, char *path, int j, char *dir)
 {
 	int		i;
 	char	*tmp;
@@ -26,10 +26,10 @@ int	control_bin2(char **args, char *path, int j, char *dir)
 			j++;
 		dir = ft_substr(path, i, j - i);
 		tmp = ft_strjoin(dir, "/");
-		tmp = ft_strjoin(tmp, args[0]);
+		tmp = ft_strjoin(tmp, temp->arg);
 		if (access(tmp, F_OK) == 0)
 		{
-			args[0] = tmp;
+			temp->arg = tmp;
 			free(dir);
 			return (1);
 		}
@@ -40,36 +40,38 @@ int	control_bin2(char **args, char *path, int j, char *dir)
 	return (0);
 }
 
-int	control_bin(t_env *data, char **args, char **envp)
+int	control_bin(t_env *data)
 {
 	int		i;
 	int		j;
 	char	*path;
 	char	*dir;
+	t_arg	*temp;
 
+	temp = data->t_arg;
 	i = 0;
-	while (envp[i])
+	while (data->envp[i])
 	{
-		if (ft_strncmp(envp[i], "PATH=", 5) == 0)
+		if (ft_strncmp(data->envp[i], "PATH=", 5) == 0)
 		{
-			path = envp[i] + 5;
+			path = data->envp[i] + 5;
 			break ;
 		}
 		i++;
 	}
 	i = 0;
-	if (control_bin2(args, path, j, dir))
+	if (control_bin2(temp, path, j, dir))
 		return (1);
 	return (0);
 }
 
-void	ft_execve(t_env *data, char **args, char **envp)
+void	ft_execve(t_env *data)
 {
-	if (control_bin(data, args, envp))
-		execve(args[0], args, envp);
+	if (control_bin(data))
+		execve(data->t_arg->arg, &data->line, data->envp);
 	else
 	{
-		printf("minishell: %s: command not found\n", args[0]);
+		printf("minishell: %s: command not found\n", data->t_arg->arg);
 		exit (1);
 	}
 }

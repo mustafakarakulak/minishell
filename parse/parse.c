@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: spalta <spalta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 19:20:57 by spalta            #+#    #+#             */
-/*   Updated: 2023/05/11 19:42:00 by spalta           ###   ########.fr       */
+/*   Updated: 2023/05/12 11:50:20 by mustafakara      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,14 @@ void	tokenizer(t_arg **prompt, t_env **data)
 	split_by_pipe(prompt);
 }
 
-int ft_parse(t_env **data)
+int ft_parse(t_env *data)
 {
 	t_arg	*line;
 
 
 	line = ft_calloc(1, sizeof(t_arg));
-	tokenizer(&line, data);
+	tokenizer(&line, &data);
 	identify_token(&line);
-	(*data)->t_arg = line;
+	data->t_arg = line;
 	return (1);
 }

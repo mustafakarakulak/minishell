@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:00:19 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/11 21:33:56 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/05/12 11:54:57 by mustafakara      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*get_username(char **envp)
 void	exec_shell(t_env *data, int status)
 {
 	if (fork() == 0)
-		ft_execve(data, data->prompt, data->envp);
+		ft_execve(data);
 	else
 		wait(&status);
 }
@@ -42,19 +42,22 @@ void	exec_shell(t_env *data, int status)
 void	start(t_env *data)
 {
 	int		status;
+	t_arg	*temp;
 
+	temp = NULL;
 	while (1)
 	{
 		printf("\033[31m%s@\033[0m\033", get_username(data->envp));
 		data->line = readline("[31mminishell-$> \033[0m");
-		ft_parse(&data);
+		ft_parse(data);
+		temp = data->t_arg;
 		add_history(data->line);
-		if (!data->t_arg->arg)
+		if (!temp->arg)
 			continue ;
-		if (ft_strcmp(data->t_arg->arg, "exit"))
-			break ;
-		builtin(data);
-		//	exec_shell(data, status);
+		if (ft_strcmp(temp->arg, "exit"))
+			exit (0);
+		if (builtin(data) && temp->arg)
+			exec_shell(data, status);
 		//all_free(data);
 	}
 }
