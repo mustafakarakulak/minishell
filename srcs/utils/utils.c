@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:47:08 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/08 22:18:51 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/05/12 11:59:05 by mustafakara      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,4 @@ int	ft_strcmp(char *s1, char *s2)
 		return (1);
 	else
 		return (0);
-}
-
-char	*ft_strcpy(char *dest, const char *src)
-{
-	int	i;
-
-	i = 0;
-	while (src[i])
-	{
-		dest[i] = src[i];
-	}
-	dest[i] = '\0';
-	return (dest);
 }

@@ -6,7 +6,7 @@
 /*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 16:32:48 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/12 11:55:06 by mustafakara      ###   ########.fr       */
+/*   Updated: 2023/05/12 11:59:00 by mustafakara      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ char	**ft_addenv(t_env *data);
 void	*ft_delenv(t_env *data, int i, int env_c);
 void	*ft_getenv(t_env *data, char *name, char **args);
 void	ft_env(t_env *data);
-char	*ft_strcpy(char *dest, const char *src);
 void	parsing_line(t_env *data);
 void	all_free(t_env *data);
 

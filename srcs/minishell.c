@@ -6,7 +6,7 @@
 /*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:00:19 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/12 11:54:57 by mustafakara      ###   ########.fr       */
+/*   Updated: 2023/05/12 11:59:50 by mustafakara      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
