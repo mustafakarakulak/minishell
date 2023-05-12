@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cd.c                                            :+:      :+:    :+:   */
+/*   token.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 19:04:33 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/12 19:47:21 by mkarakul         ###   ########.fr       */
+/*   Created: 2023/05/12 15:29:36 by mkarakul          #+#    #+#             */
+/*   Updated: 2023/05/12 18:17:53 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+#include "../minishell.h"
 
-void	ft_cd(t_env *data)
+void	ft_token(t_env *data)
 {
 	t_arg	*temp;
+	int		i;
 
+	i = 0;
+	temp = malloc(sizeof(t_arg) * 1);
 	temp = data->t_arg;
-	if (temp->next && ft_strcmp(temp->next->arg, "~") == 0)
+	data->command = malloc(sizeof(char *) * 4);
+	while (temp->arg)
 	{
-		if (chdir(temp->next->arg))
-			perror("minishell ");
+		data->command[i] = temp->arg;
+		i++;
+		if (temp->next)
+			temp = temp->next;
 	}
-	else if (chdir(getenv("HOME")))
-		perror("minishell ");
 }

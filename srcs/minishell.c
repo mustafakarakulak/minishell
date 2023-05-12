@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
+/*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:00:19 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/12 11:59:50 by mustafakara      ###   ########.fr       */
+/*   Updated: 2023/05/12 18:15:29 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,14 @@ void	start(t_env *data)
 		ft_parse(data);
 		temp = data->t_arg;
 		add_history(data->line);
-		if (!temp->arg)
+		data->prompt = ft_command_checker(data->line, data);
+		if (!temp)
 			continue ;
 		if (ft_strcmp(temp->arg, "exit"))
 			exit (0);
 		if (builtin(data) && temp->arg)
 			exec_shell(data, status);
-		//all_free(data);
+		all_free(data);
 	}
 }
 

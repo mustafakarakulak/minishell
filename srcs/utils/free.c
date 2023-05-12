@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 16:46:12 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/04 15:25:10 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/05/12 15:28:21 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 
 void	all_free(t_env *data)
 {
-	int	i;
-
-	i = -1;
 	free(data->line);
-	while (data->prompt[++i])
-		free(data->prompt[i]);
-	free(data->prompt);
+	while (data->t_arg)
+	{
+		free(data->t_arg->arg);
+		data->t_arg = data->t_arg->next;
+	}
 }

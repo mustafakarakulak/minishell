@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execve.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
+/*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:17:14 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/12 11:54:40 by mustafakara      ###   ########.fr       */
+/*   Updated: 2023/05/12 16:16:34 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	control_bin(t_env *data)
 void	ft_execve(t_env *data)
 {
 	if (control_bin(data))
-		execve(data->t_arg->arg, &data->line, data->envp);
+		execve(data->t_arg->arg, data->prompt, data->envp);
 	else
 	{
 		printf("minishell: %s: command not found\n", data->t_arg->arg);

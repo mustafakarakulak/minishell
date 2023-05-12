@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
+/*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 16:32:48 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/12 11:59:00 by mustafakara      ###   ########.fr       */
+/*   Updated: 2023/05/12 15:30:56 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	ft_unset(t_env *data);
 int		ft_redirection_control(t_env *data);
 int		builtin(t_env *data);
 
-int 	ft_parse(t_env *data);
-
+int		ft_parse(t_env *data);
+void	ft_token(t_env *data);
 
 #endif

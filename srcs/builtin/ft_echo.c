@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 19:04:59 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/11 21:49:10 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/05/12 18:18:19 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_echo(t_env *data)
 {
 	t_arg	*temp;
 
-	temp = data->t_arg->next;
+	temp = data->t_arg;
 	printf("temp->arg = %s\n", temp->arg);
 	if (ft_strcmp(temp->arg, "-n") == 1 && temp->next)
 	{
