@@ -6,7 +6,7 @@
 /*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:00:19 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/12 22:14:28 by mustafakara      ###   ########.fr       */
+/*   Updated: 2023/05/13 01:13:32 by mustafakara      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	start(t_env *data)
 		ft_parse(data);
 		temp = data->t_arg;
 		add_history(data->line);
-		data->prompt = ft_command_checker(data->line, data);
 		ft_token(data);
 		if (!temp)
 			continue ;

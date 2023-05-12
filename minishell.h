@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 16:32:48 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/12 15:30:56 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/05/13 01:14:12 by mustafakara      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_env
 	int		count;
 	char	**envp;
 	char	**ex_path;
-	char	**parameter;
+	char	*pipe;
 	char	**args;
 	char	**command;
 }				t_env;
