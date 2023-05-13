@@ -6,7 +6,7 @@
 /*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:17:14 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/12 22:15:10 by mustafakara      ###   ########.fr       */
+/*   Updated: 2023/05/13 17:30:19 by mustafakara      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ int	control_bin(t_env *data)
 
 	temp = data->t_arg;
 	i = 0;
+	if (ft_strncmp(temp->arg, "./", 2) == 0)
+		return (1);
 	while (data->envp[i])
 	{
 		if (ft_strncmp(data->envp[i], "PATH=", 5) == 0)
