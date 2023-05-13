@@ -1,18 +1,30 @@
 m = default commit message
 
-all:
-	gcc libft/libft.a srcs/parsing/parsing.c srcs/utils/free.c \
+NAME = minishell
+
+LIBFT_S = cd libft && make
+
+LIBFT_C = cd libft && make fclean
+
+SRC = libft/libft.a srcs/parsing/parsing.c srcs/utils/free.c \
 	srcs/builtin/builtin.c srcs/builtin/env_utils.c \
 	srcs/check/checker.c srcs/minishell.c srcs/utils/utils.c \
 	srcs/execute/execve.c srcs/builtin/ft_cd.c srcs/builtin/ft_echo.c \
 	srcs/builtin/ft_export.c srcs/builtin/ft_unset.c srcs/redirection/redirection.c \
-	lexer/*.c parse/*.c srcs/token.c -lreadline -o minishell
+	lexer/*.c parse/*.c srcs/token.c 
+
+GCC = gcc
+
+FLAG = -lreadline -o $(NAME)
+
+all:
+	$(LIBFT_S)
+	$(GCC) $(SRC) $(FLAG)
 
 clean:
-	rm -rf libft/*.o
+	rm -rf $(NAME)
 
 fclean:
-	rm -rf minishell
     $(clean)
 
 git:
