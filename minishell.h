@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
+/*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 16:32:48 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/13 01:14:12 by mustafakara      ###   ########.fr       */
+/*   Updated: 2023/05/17 20:33:54 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ typedef struct s_data
 int		ft_strcmp(char *s1, char *s2);
 
 // ms_utils
-char	**ft_command_checker(char *str, t_env *data);
 t_env	*parse_env(t_env *env, char **envp);
 void	ft_execve(t_env *data);
 
@@ -69,6 +68,8 @@ int		ft_redirection_control(t_env *data);
 int		builtin(t_env *data);
 
 int		ft_parse(t_env *data);
-void	ft_token(t_env *data);
+void	ft_command_line(t_env *data);
+
+int		redirection_checker(t_env *data);
 
 #endif

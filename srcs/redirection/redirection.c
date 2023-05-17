@@ -3,52 +3,97 @@
 /*                                                        :::      ::::::::   */
 /*   redirection.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
+/*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/09 01:23:42 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/15 02:08:08 by mustafakara      ###   ########.fr       */
+/*   Created: 2023/05/17 19:48:13 by mkarakul          #+#    #+#             */
+/*   Updated: 2023/05/17 20:23:00 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-void    *pipe(t_env *data)
+void	*input_rdr(t_env *data)
 {
-    int     fd[2];
-    int     pid;
-    int     status;
+	int		fd;
+	t_arg	*temp;
 
-    pipe(fd);
-    pid = fork();
-    if (pid == 0)
-    {
-        dup2(fd[1], 1);
-        close(fd[0]);
-        ft_execve(data);
-    }
-    else
-    {
-        dup2(fd[0], 0);
-        close(fd[1]);
-        wait(&status);
-    }
-    return (NULL);
+	temp = data->t_arg;
+	fd = open(temp->next->arg, O_RDONLY);
+	if (fd < 0)
+	{
+		printf("minishell: %s: No such file or directory\n", temp->next->arg);
+		return (NULL);
+	}
+	dup2(fd, 0);
+	close(fd);
+	return (NULL);
 }
 
-void    *redirection(t_env *data)
+void	*output_rdr(t_env *data)
 {
-    int     fd;
-    int     pid;
-    int     status;
+	int		fd;
+	t_arg	*temp;
 
-    fd = open("file.txt", O_CREAT | O_RDWR | O_TRUNC, 0644);
-    pid = fork();
-    if (pid == 0)
-    {
-        dup2(fd, 1);
-        ft_execve(data);
-    }
-    else
-        wait(&status);
-    return (NULL);
+	temp = data->t_arg;
+	fd = open(temp->next->arg, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (fd < 0)
+	{
+		printf("minishell: %s: No such file or directory\n", temp->next->arg);
+		return (NULL);
+	}
+	dup2(fd, 1);
+	close(fd);
+	return (NULL);
+}
+
+void	*double_input_rdr(t_env *data)
+{
+	int		fd;
+	t_arg	*temp;
+
+	temp = data->t_arg;
+	fd = open(temp->next->arg, O_RDONLY);
+	if (fd < 0)
+	{
+		printf("minishell: %s: No such file or directory\n", temp->next->arg);
+		return (NULL);
+	}
+	dup2(fd, 0);
+	close(fd);
+	return (NULL);
+}
+
+void	*double_output_rdr(t_env *data)
+{
+	int		fd;
+	t_arg	*temp;
+
+	temp = data->t_arg;
+	fd = open(temp->next->arg, O_WRONLY | O_CREAT | O_APPEND, 0644);
+	if (fd < 0)
+	{
+		printf("minishell: %s: No such file or directory\n", temp->next->arg);
+		return (NULL);
+	}
+	dup2(fd, 1);
+	close(fd);
+	return (NULL);
+}
+
+int	redirection_checker(t_env *data)
+{
+	t_arg	*temp;
+
+	temp = data->t_arg;
+	if (temp->type == INPUT_RDR)
+		input_rdr(data);
+	else if (temp->type == OUTPUT_RDR)
+		output_rdr(data);
+	else if (temp->type == DOUBLE_INPUT_RDR)
+		double_input_rdr(data);
+	else if (temp->type == DOUBLE_OUTPUT_RDR)
+		double_output_rdr(data);
+	else
+		return (1);
+	return (0);
 }

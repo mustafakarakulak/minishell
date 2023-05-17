@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execve.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
+/*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:17:14 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/15 02:06:14 by mustafakara      ###   ########.fr       */
+/*   Updated: 2023/05/16 01:25:04 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	ft_execve(t_env *data)
 		execve(data->t_arg->arg, data->command, data->envp);
 	else
 	{
-		printf("minishell: %s: command not found\n", data->t_arg->arg);
+		perror("minishell");
 		exit (1);
 	}
 }
