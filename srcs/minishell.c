@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:00:19 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/17 20:34:04 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/05/19 21:31:21 by mustafakara      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ char	*get_username(char **envp)
 void	exec_shell(t_env *data, int status)
 {
 	if (fork() == 0)
+	{
+		data->child_check = -1;
 		ft_execve(data);
+	}
 	else
 		wait(&status);
 }
@@ -60,6 +63,7 @@ void	start(t_env *data)
 		redirection_checker(data);
 		if (builtin(data) && temp->arg)
 			exec_shell(data, status);
+		data->child_check = 0;
 		all_free(data);
 	}
 }
@@ -71,6 +75,7 @@ int	main(int ac, char **av, char **env)
 	data = (t_env *)malloc(sizeof(t_env));
 	data->envp = env;
 	data->ex_path = data->envp;
+	data->child_check = 0;
 	start(data);
 	return (0);
 }
