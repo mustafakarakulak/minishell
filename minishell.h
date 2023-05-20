@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
+/*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 16:32:48 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/19 21:13:05 by mustafakara      ###   ########.fr       */
+/*   Updated: 2023/05/20 19:02:13 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,8 @@ int		ft_parse(t_env *data);
 void	ft_command_line(t_env *data);
 
 int		redirection_checker(t_env *data);
+
+int		check_way(t_env *data);
+void	exec_shell(t_env *data, int status);
 
 #endif

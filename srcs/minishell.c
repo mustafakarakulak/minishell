@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
+/*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:00:19 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/19 21:31:21 by mustafakara      ###   ########.fr       */
+/*   Updated: 2023/05/20 19:01:17 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	exec_shell(t_env *data, int status)
 
 void	start(t_env *data)
 {
-	int		status;
 	t_arg	*temp;
 
 	temp = NULL;
@@ -60,9 +59,7 @@ void	start(t_env *data)
 			continue ;
 		if (ft_strcmp(temp->arg, "exit"))
 			exit (0);
-		redirection_checker(data);
-		if (builtin(data) && temp->arg)
-			exec_shell(data, status);
+		check_way(data);
 		data->child_check = 0;
 		all_free(data);
 	}

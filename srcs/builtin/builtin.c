@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 18:34:03 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/11 21:35:19 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/05/20 19:04:31 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ int	builtin(t_env *data)
 	else if (ft_strcmp(data->t_arg->arg, "env"))
 		ft_env(data);
 	else
-		return (1);
+		return (-1);
 	return (0);
 }
