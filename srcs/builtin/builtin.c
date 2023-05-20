@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 18:34:03 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/20 19:04:31 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/05/20 21:29:36 by mustafakara      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,20 @@
 
 int	builtin(t_env *data)
 {
-	if (ft_strcmp(data->t_arg->arg, "echo"))
+	t_arg	*temp;
+
+	temp = data->t_arg;
+	if (ft_strcmp(temp->arg, "echo"))
 		ft_echo(data);
-	else if (ft_strcmp(data->t_arg->arg, "cd"))
+	else if (ft_strcmp(temp->arg, "cd"))
 		ft_cd(data);
-	else if (ft_strcmp(data->t_arg->arg, "pwd"))
+	else if (ft_strcmp(temp->arg, "pwd"))
 		ft_pwd(data);
-	else if (ft_strcmp(data->t_arg->arg, "export"))
+	else if (ft_strcmp(temp->arg, "export"))
 		ft_export(data);
-	else if (ft_strcmp(data->t_arg->arg, "unset"))
+	else if (ft_strcmp(temp->arg, "unset"))
 		ft_unset(data);
-	else if (ft_strcmp(data->t_arg->arg, "env"))
+	else if (ft_strcmp(temp->arg, "env"))
 		ft_env(data);
 	else
 		return (-1);

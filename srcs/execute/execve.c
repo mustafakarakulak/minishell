@@ -6,7 +6,7 @@
 /*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:17:14 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/19 21:28:10 by mustafakara      ###   ########.fr       */
+/*   Updated: 2023/05/20 21:30:10 by mustafakara      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,12 @@ int	control_bin(t_env *data)
 
 void	ft_execve(t_env *data)
 {
+	t_arg	*temp;
+
+	temp = data->t_arg;
 	if (control_bin(data))
 	{
-		execve(data->t_arg->arg, data->command, data->envp);
+		execve(temp->arg, data->command, data->envp);
 		if (data->child_check == -1)
 			exit (0);
 	}
