@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
+/*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:00:19 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/20 22:03:13 by mustafakara      ###   ########.fr       */
+/*   Updated: 2023/05/20 22:43:15 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,15 @@ void	start(t_env *data)
 			continue ;
 		if (ft_strcmp(temp->arg, "exit"))
 			exit (0);
-		ft_command_line(data);
-		check_way(data);
-		data->child_check = 0;
-		all_free(data);
+		while (temp)
+		{
+			ft_command_line(data);
+			check_way(data);
+			data->child_check = 0;
+			data->t_arg = data->temp_list;
+			temp = data->t_arg;
+		}
+		//all_free(data);
 	}
 }
 

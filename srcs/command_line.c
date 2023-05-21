@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_line.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
+/*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:29:36 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/20 21:48:06 by mustafakara      ###   ########.fr       */
+/*   Updated: 2023/05/21 15:47:56 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,5 @@ void	ft_command_line(t_env *data)
 		if (temp)
 			temp = temp->next;
 	}
+	data->temp_list = temp;
 }
