@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 19:48:13 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/20 20:18:42 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/05/25 20:13:30 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,9 @@ void	*input_rdr(t_env *data)
 {
 	int		fd;
 	t_arg	*temp;
-	pid_t	pid;
 
 	temp = data->t_arg;
-	pid = fork();
-	if (pid == 0)
+	if (temp->next->type == WORD)
 		fd = open(temp->next->arg, O_RDONLY);
 	else if (fd < 0)
 	{
@@ -37,11 +35,9 @@ void	*output_rdr(t_env *data)
 {
 	int		fd;
 	t_arg	*temp;
-	pid_t	pid;
 
-	pid = fork();
 	temp = data->t_arg;
-	if (pid == 0)
+	if (temp->next->type == WORD)
 		fd = open(temp->next->arg, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	else if (fd < 0)
 	{
@@ -65,7 +61,7 @@ void	*double_input_rdr(t_env *data)
 		printf("minishell: %s: No such file or directory\n", temp->next->arg);
 		return (NULL);
 	}
-	//dup2(fd, 0);
+	dup2(fd, 0);
 	close(fd);
 	return (NULL);
 }
@@ -82,7 +78,7 @@ void	*double_output_rdr(t_env *data)
 		printf("minishell: %s: No such file or directory\n", temp->next->arg);
 		return (NULL);
 	}
-	//dup2(fd, 1);
+	dup2(fd, 1);
 	close(fd);
 	return (NULL);
 }

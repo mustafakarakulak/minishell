@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
+/*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 16:32:48 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/20 21:28:14 by mustafakara      ###   ########.fr       */
+/*   Updated: 2023/05/25 20:16:13 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # include <fcntl.h>
 # include <dirent.h>
 
-typedef struct s_env
+typedef struct g_env
 {
 	t_arg	*t_arg;
 	t_arg	*temp_list;
@@ -33,9 +33,6 @@ typedef struct s_env
 	char	**envp;
 	char	**ex_path;
 	char	**command;
-	int		pipe_c;
-	int		redir_c;
-	int 	child_check;
 }				t_env;
 
 typedef struct s_data

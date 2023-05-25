@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:00:19 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/20 22:43:15 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/05/25 20:44:49 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,8 @@ char	*get_username(char **envp)
 
 void	exec_shell(t_env *data, int status)
 {
-	if (fork() == 0)
-	{
-		data->child_check = -1;
+	if (status == 0)
 		ft_execve(data);
-	}
 	else
 		wait(&status);
 }
@@ -53,20 +50,17 @@ void	start(t_env *data)
 		data->line = readline("[31mminishell-$> \033[0m");
 		ft_parse(data);
 		temp = data->t_arg;
-		add_history(data->line);
 		if (!temp)
 			continue ;
 		if (ft_strcmp(temp->arg, "exit"))
-			exit (0);
-		while (temp)
 		{
-			ft_command_line(data);
-			check_way(data);
-			data->child_check = 0;
-			data->t_arg = data->temp_list;
-			temp = data->t_arg;
+			write(1, "exit\n", 5);
+			exit (0);
 		}
-		//all_free(data);
+		ft_command_line(data);
+		check_way(data);
+		add_history(data->line);
+		all_free(data);
 	}
 }
 
@@ -77,7 +71,6 @@ int	main(int ac, char **av, char **env)
 	data = (t_env *)malloc(sizeof(t_env));
 	data->envp = env;
 	data->ex_path = data->envp;
-	data->child_check = 0;
 	start(data);
 	return (0);
 }

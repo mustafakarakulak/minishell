@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execve.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mustafakarakulak <mustafakarakulak@stud    +#+  +:+       +#+        */
+/*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:17:14 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/20 21:30:10 by mustafakara      ###   ########.fr       */
+/*   Updated: 2023/05/25 20:16:42 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,7 @@ void	ft_execve(t_env *data)
 
 	temp = data->t_arg;
 	if (control_bin(data))
-	{
 		execve(temp->arg, data->command, data->envp);
-		if (data->child_check == -1)
-			exit (0);
-	}
 	else
 	{
 		perror("minishell");
