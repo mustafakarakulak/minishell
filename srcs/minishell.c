@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 16:00:19 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/25 20:44:49 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/05/26 15:56:57 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	exec_shell(t_env *data, int status)
 	if (status == 0)
 		ft_execve(data);
 	else
-		wait(&status);
+		perror("minishell");
 }
 
 void	start(t_env *data)
@@ -57,7 +57,6 @@ void	start(t_env *data)
 			write(1, "exit\n", 5);
 			exit (0);
 		}
-		ft_command_line(data);
 		check_way(data);
 		add_history(data->line);
 		all_free(data);

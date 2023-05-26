@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 16:32:48 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/25 20:16:13 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/05/26 16:02:39 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 typedef struct g_env
 {
 	t_arg	*t_arg;
-	t_arg	*temp_list;
+	char	*redirection;
 	char	*line;
 	char	*username;
 	char	**envp;

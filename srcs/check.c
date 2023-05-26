@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 21:05:14 by mustafakara       #+#    #+#             */
-/*   Updated: 2023/05/25 20:43:56 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/05/26 16:06:32 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	check_way(t_env *data)
 	int		status;
 
 	temp = data->t_arg;
+	ft_command_line(data);
+	printf("%s\n", data->command[0]);
 	if (builtin(data) != -1)
 		return (0);
 	status = fork();

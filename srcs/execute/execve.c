@@ -6,7 +6,7 @@
 /*   By: mkarakul <mkarakul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 16:17:14 by mkarakul          #+#    #+#             */
-/*   Updated: 2023/05/25 20:16:42 by mkarakul         ###   ########.fr       */
+/*   Updated: 2023/05/26 16:00:40 by mkarakul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,11 @@ int	control_bin(t_env *data)
 			path = data->envp[i] + 5;
 			break ;
 		}
-		i++;
+		else
+			i++;
 	}
-	i = 0;
+	if (data->envp[i] == NULL)
+		return (0);
 	if (control_bin2(temp, path, j, dir))
 		return (1);
 	return (0);
